@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block title %} VoteLock | Add Voter {% endblock %}
+{% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/voters.css') }}"
+/>
+
+{% endblock %} {% block page_heading %} Add Voter {% endblock %} {% block
+content %}
+
+<div class="form-page">
+  <div class="form-card">
+    <h1>Register New Voter</h1>
+
+    <p>Add voter details to the election database.</p>
+
+    <form method="POST">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Voter ID *</label>
+
+          <input type="text" name="voter_id" placeholder="V001" required />
+        </div>
+
+        <div class="form-group">
+          <label>Full Name *</label>
+
+          <input type="text" name="name" placeholder="Voter name" required />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+
+          <input type="email" name="email" placeholder="voter@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Department</label>
+
+          <input type="text" name="department" placeholder="ECE" />
+        </div>
+
+        <div class="form-group">
+          <label>Username</label>
+
+          <input type="text" name="username" placeholder="Optional" />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+
+          <input type="password" name="password" placeholder="Optional" />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a href="{{ url_for('voters.list_voters') }}" class="secondary-button">
+          Cancel
+        </a>
+
+        <button type="submit" class="primary-button">Register Voter</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %} VoteLock | Edit Voter {% endblock %}
+{% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/voters.css') }}"
+/>
+
+{% endblock %} {% block page_heading %} Edit Voter {% endblock %} {% block
+content %}
+
+<div class="form-page">
+  <div class="form-card">
+    <h1>Edit Voter</h1>
+
+    <p>Update voter information.</p>
+
+    <form method="POST">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Voter ID</label>
+
+          <input type="text" value="{{ voter['voter_id'] }}" disabled />
+        </div>
+
+        <div class="form-group">
+          <label>Name *</label>
+
+          <input type="text" name="name" value="{{ voter['name'] }}" required />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+
+          <input type="email" name="email" value="{{ voter['email'] or '' }}" />
+        </div>
+
+        <div class="form-group">
+          <label>Department</label>
+
+          <input
+            type="text"
+            name="department"
+            value="{{ voter['department'] or '' }}"
+          />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a href="{{ url_for('voters.list_voters') }}" class="secondary-button">
+          Cancel
+        </a>
+
+        <button type="submit" class="primary-button">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

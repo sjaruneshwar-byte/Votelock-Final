@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}VoteLock | Dashboard{% endblock %}
+{% block page_heading %}Election Dashboard{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <section class="dashboard-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">ADMIN CONTROL CENTER</p>
+      <h1>Good day, {{ admin_name }}.</h1>
+      <p>Manage voters and candidates, verify voters at the polling station, and monitor the VVPAT-enabled voting process.</p>
+    </div>
+    <a class="dashboard-primary" href="{{ url_for('qr.scanner') }}">
+      <span>Verify &amp; Vote</span><strong>→</strong>
+    </a>
+  </section>
+
+  <section class="stats-grid" aria-label="Election statistics">
+    <a class="stat-card stat-blue" href="{{ url_for('voters.list_voters') }}">
+      <span class="stat-icon">◉</span><span class="stat-copy"><small>Registered Voters</small><strong>{{ stats.voters }}</strong><em>Total voters in system</em></span><b class="stat-arrow">→</b>
+    </a>
+    <a class="stat-card stat-purple" href="{{ url_for('candidates.list_candidates') }}">
+      <span class="stat-icon">◆</span><span class="stat-copy"><small>Active Candidates</small><strong>{{ stats.candidates }}</strong><em>Available for voting</em></span><b class="stat-arrow">→</b>
+    </a>
+    <div class="stat-card stat-green">
+      <span class="stat-icon">✓</span><span class="stat-copy"><small>Votes Recorded</small><strong>{{ stats.votes }}</strong><em>Successfully cast votes</em></span>
+    </div>
+    <div class="stat-card stat-orange">
+      <span class="stat-icon">↗</span><span class="stat-copy"><small>Turnout</small><strong>{{ stats.turnout }}%</strong><em>{{ stats.voted_voters }} of {{ stats.voters }} voters</em></span>
+    </div>
+  </section>
+
+  <section class="main-grid">
+    <div class="dashboard-card quick-card">
+      <div class="section-heading">
+        <div class="section-icon blue-icon">⌁</div>
+        <div><p class="eyebrow">POLLING STATION</p><h2>Verify &amp; Vote</h2><p>Complete the controlled voting workflow from QR verification to VVPAT.</p></div>
+        <span class="online-badge"><i></i> Online</span>
+      </div>
+
+      <a class="verify-feature" href="{{ url_for('qr.scanner') }}">
+        <div class="verify-feature-icon">⌁</div>
+        <div class="verify-feature-copy"><strong>Start polling workflow</strong><span>Scan voter QR · Verify voter · Capture photo · Cast vote</span></div>
+        <span class="feature-arrow">→</span>
+      </a>
+
+      <div class="workflow-row">
+        <div class="workflow-step"><b>01</b><span>Voter login</span></div>
+        <div class="workflow-line"></div>
+        <div class="workflow-step"><b>02</b><span>QR display</span></div>
+        <div class="workflow-line"></div>
+        <div class="workflow-step"><b>03</b><span>Admin scan</span></div>
+        <div class="workflow-line"></div>
+        <div class="workflow-step"><b>04</b><span>Photo capture</span></div>
+        <div class="workflow-line"></div>
+        <div class="workflow-step"><b>05</b><span>Vote + VVPAT</span></div>
+      </div>
+    </div>
+
+    <div class="dashboard-card election-card">
+      <div class="card-title-row"><div><p class="eyebrow">ELECTION STATUS</p><h2>Turnout</h2></div><span class="active-badge">● Active</span></div>
+      <div class="turnout-content">
+        <div><strong class="turnout-number">{{ stats.turnout }}%</strong><p>{{ stats.voted_voters }} voted <span>·</span> {{ stats.pending_voters }} pending</p></div>
+        <div class="donut" style="--turnout: {{ stats.turnout }}%;"><div><strong>{{ stats.turnout }}%</strong><span>participation</span></div></div>
+      </div>
+      <div class="progress-track"><div class="progress-fill" style="width:{{ stats.turnout }}%"></div></div>
+    </div>
+  </section>
+
+  <section class="lower-grid">
+    <div class="dashboard-card management-card">
+      <div class="card-title-row"><div><p class="eyebrow">QUICK ACTIONS</p><h2>Election management</h2><p>Frequently used administration tools.</p></div></div>
+      <div class="action-grid">
+        <a class="management-action action-blue" href="{{ url_for('voters.add_voter') }}"><span>＋</span><div><strong>Add voter</strong><small>Create voter credentials and QR identity</small></div><b>→</b></a>
+        <a class="management-action action-purple" href="{{ url_for('candidates.add_candidate') }}"><span>◆</span><div><strong>Add candidate</strong><small>Add and manage election candidates</small></div><b>→</b></a>
+        <a class="management-action action-green" href="{{ url_for('voters.list_voters') }}"><span>◉</span><div><strong>Manage voters</strong><small>View voter status and records</small></div><b>→</b></a>
+        <a class="management-action action-orange" href="{{ url_for('candidates.list_candidates') }}"><span>◆</span><div><strong>Manage candidates</strong><small>Review active candidate list</small></div><b>→</b></a>
+      </div>
+    </div>
+
+    <div class="dashboard-card activity-card">
+      <div class="card-title-row"><div><p class="eyebrow">SYSTEM ACTIVITY</p><h2>Recent activity</h2><p>Latest security and election events.</p></div><span class="activity-symbol">◷</span></div>
+      {% if logs %}
+      <div class="activity-list">
+        {% for log in logs[:5] %}
+        <div class="activity-item"><div class="activity-icon">✓</div><div class="activity-content"><strong>{{ log['event_type']|replace('_',' ')|title }}</strong><p>{{ log['description'] }}</p></div><time>{{ log['created_at'] }}</time></div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="empty-state"><span>◷</span><strong>No activity yet</strong><small>System events will appear here as the election workflow is used.</small></div>
+      {% endif %}
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}VoteLock | Verify & Vote{% endblock %}
+{% block page_heading %}Verify & Vote{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/qr_scanner.css') }}">
+{% endblock %}
+{% block content %}
+<div class="station-page">
+  <div class="station-header">
+    <div>
+      <div class="eyebrow">POLLING STATION · CONTROLLED VOTING</div>
+      <h1>Verify voter and cast vote</h1>
+      <p>Scan the voter's QR, confirm the verified identity, capture the polling-station photo, then record the vote.</p>
+    </div>
+    <div class="station-live"><span></span> Station ready</div>
+  </div>
+
+  <div class="station-progress">
+    <div class="step active"><b>01</b><span>Scan QR</span></div>
+    <div class="line"></div>
+    <div class="step"><b>02</b><span>Verify voter</span></div>
+    <div class="line"></div>
+    <div class="step"><b>03</b><span>Capture photo</span></div>
+    <div class="line"></div>
+    <div class="step"><b>04</b><span>Cast vote</span></div>
+    <div class="line"></div>
+    <div class="step"><b>05</b><span>VVPAT</span></div>
+  </div>
+
+  <div class="station-grid">
+    <section class="station-card camera-card">
+      <div class="card-title">
+        <div class="title-icon">⌁</div>
+        <div><h2>Administrator camera</h2><p>Use the polling-station camera to scan the voter's QR.</p></div>
+        <span class="camera-badge">LIVE</span>
+      </div>
+
+      <select id="camera-select" class="camera-select" style="display:none"></select>
+      <div class="camera-shell">
+        <div id="qr-reader" class="dashboard-qr-reader"></div>
+        <div class="scan-overlay"><span></span><i></i></div>
+      </div>
+      <div id="scanner-status" class="scanner-status"><span class="pulse"></span> Initializing camera…</div>
+      <div class="camera-help">Position the complete QR inside the frame. The camera is controlled by the administrator.</div>
+    </section>
+
+    <section class="station-card identity-card">
+      <div class="card-title">
+        <div class="title-icon">✓</div>
+        <div><h2>Verified voter</h2><p>Identity confirmation appears here after a successful QR scan.</p></div>
+      </div>
+
+      <div id="verification-message" class="verify-message neutral">
+        <strong>Waiting for QR verification</strong>
+        <span>Ask the authenticated voter to display their QR code.</span>
+      </div>
+
+      <div id="voter-details" class="identity-panel hidden">
+        <div class="verified-banner"><span>✓</span><div><strong>Voter verified</strong><small>QR token matched the registered voter record.</small></div></div>
+        <div class="identity-main">
+          <div class="photo-panel">
+            <div class="photo-label">POLLING-STATION PHOTO</div>
+            <div class="photo-frame">
+              <video id="photo-video" autoplay playsinline muted></video>
+              <img id="captured-photo" alt="Captured voter" />
+              <div id="photo-placeholder"><span>◯</span><small>Photo will appear here</small></div>
+            </div>
+            <canvas id="photo-canvas" hidden></canvas>
+            <button id="capture-photo-btn" class="photo-button" type="button" disabled>Capture voter photo</button>
+            <div id="photo-status" class="photo-status">Photo capture required before voting.</div>
+          </div>
+
+          <div class="details-panel">
+            <div class="detail"><span>Voter ID</span><strong id="voter-id">—</strong></div>
+            <div class="detail"><span>Full name</span><strong id="voter-name">—</strong></div>
+            <div class="detail"><span>Department</span><strong id="voter-department">—</strong></div>
+            <div class="detail"><span>Voting status</span><strong id="voter-status" class="status-ready">ELIGIBLE</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="candidate-area" class="candidate-area hidden">
+        <div class="candidate-heading"><div><h3>Record vote</h3><p>Select one active candidate after voter verification and photo capture.</p></div><span class="locked-label">PHOTO REQUIRED</span></div>
+        <div class="candidate-grid">
+          {% for candidate in candidates %}
+          <button class="candidate-btn" data-candidate-id="{{ candidate['candidate_id'] }}" disabled type="button">
+            <span class="candidate-symbol">{{ candidate['symbol'] or '🗳️' }}</span>
+            <span class="candidate-copy"><strong>{{ candidate['name'] }}</strong><small>{{ candidate['party'] or 'Independent' }} · {{ candidate['candidate_id'] }}</small></span>
+            <span class="candidate-arrow">→</span>
+          </button>
+          {% else %}
+          <div class="empty-candidate">No active candidates are available. Add candidates from the Candidates menu.</div>
+          {% endfor %}
+        </div>
+        <div class="cast-warning"><span>!</span><div><strong>Final action</strong><small>After confirmation, the vote is stored, the voter is marked as voted, and the VVPAT print workflow is triggered.</small></div></div>
+      </div>
+
+      <div id="success-box" class="success-box hidden">
+        <div class="success-mark">✓</div>
+        <h3>Vote recorded successfully</h3>
+        <p id="success-text"></p>
+        <small id="vvpat-text"></small>
+        <button class="next-btn" type="button" onclick="location.reload()">Start next voter</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="station-security"><span>⌾</span><div><strong>Controlled polling workflow</strong><p>Voter authentication happens in the voter portal. QR scanning, voter verification, photo capture, candidate selection and vote recording remain under administrator/polling-station control.</p></div></div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="{{ url_for('static', filename='js/admin_qr_vote.js') }}"></script>
+{% endblock %}

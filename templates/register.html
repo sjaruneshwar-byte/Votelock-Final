@@ -1,0 +1,136 @@
+{% extends "base.html" %} {% block title %} VoteLock | Admin Registration {%
+endblock %} {% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/auth.css') }}"
+/>
+
+{% endblock %} {% block content %}
+
+<div class="auth-page">
+  <div class="auth-wrapper">
+    <!-- BRANDING -->
+
+    <div class="auth-brand">
+      <div class="big-logo">🗳️</div>
+
+      <h1>VoteLock</h1>
+
+      <p>Smart Electronic Voting System</p>
+    </div>
+
+    <!-- REGISTRATION CARD -->
+
+    <div class="auth-card">
+      <h2>Create Admin Account</h2>
+
+      <p class="auth-subtitle">Register as a VoteLock administrator</p>
+
+      <!-- FLASH MESSAGES -->
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+
+      <div class="flash-messages">
+        {% for category, message in messages %}
+
+        <div class="flash-message {{ category }}">{{ message }}</div>
+
+        {% endfor %}
+      </div>
+
+      {% endif %} {% endwith %}
+
+      <!-- REGISTRATION FORM -->
+
+      <form method="POST" action="{{ url_for('auth.register') }}">
+        <!-- NAME -->
+
+        <div class="form-group">
+          <label for="name"> Full Name </label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+          <label for="email"> Email Address </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="admin@example.com"
+            autocomplete="email"
+            required
+          />
+
+          <small> An OTP will be sent to this email. </small>
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+          <label for="password"> Password </label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Minimum 8 characters"
+            minlength="8"
+            autocomplete="new-password"
+            required
+          />
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="form-group">
+          <label for="confirm_password"> Confirm Password </label>
+
+          <input
+            type="password"
+            id="confirm_password"
+            name="confirm_password"
+            placeholder="Re-enter your password"
+            minlength="8"
+            autocomplete="new-password"
+            required
+          />
+        </div>
+
+        <!-- SUBMIT -->
+
+        <button type="submit" class="auth-button">
+          Register &amp; Send OTP
+        </button>
+      </form>
+
+      <!-- LOGIN LINK -->
+
+      <div class="auth-footer">
+        Already have an admin account?
+
+        <a href="{{ url_for('auth.login') }}"> Login </a>
+      </div>
+    </div>
+
+    <!-- SECURITY MESSAGE -->
+
+    <p class="security-note">
+      🔒 OTP verification required for administrator access
+    </p>
+  </div>
+</div>
+
+{% endblock %}

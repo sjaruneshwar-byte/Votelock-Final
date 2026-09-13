@@ -1,0 +1,418 @@
+/* =====================================================
+   VOTELOCK - CANDIDATE MANAGEMENT
+   ===================================================== */
+
+.candidate-page {
+  padding: 32px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADER ---------- */
+
+.candidate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.candidate-header-text .eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #64748b;
+}
+
+.candidate-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #172554;
+}
+
+.candidate-header p {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+/* ---------- ADD BUTTON ---------- */
+
+.candidate-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 18px;
+
+  background: #2563eb;
+  color: white;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.candidate-add-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* ---------- FLASH MESSAGE ---------- */
+
+.candidate-flash {
+  padding: 13px 16px;
+  margin-bottom: 20px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.candidate-flash.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.candidate-flash.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* ---------- TABLE CARD ---------- */
+
+.candidate-table-card {
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.candidate-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* ---------- TABLE HEADER ---------- */
+
+.candidate-table thead {
+  background: #f8fafc;
+}
+
+.candidate-table th {
+  padding: 15px 18px;
+
+  text-align: left;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  color: #64748b;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* ---------- TABLE BODY ---------- */
+
+.candidate-table td {
+  padding: 17px 18px;
+
+  font-size: 14px;
+  color: #334155;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.candidate-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.candidate-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.candidate-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- CANDIDATE ID ---------- */
+
+.candidate-id {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* ---------- NAME ---------- */
+
+.candidate-name {
+  font-weight: 600;
+  color: #172554;
+}
+
+/* ---------- SYMBOL ---------- */
+
+.candidate-symbol {
+  display: inline-flex;
+
+  min-width: 42px;
+  height: 42px;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #eff6ff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 8px;
+
+  font-size: 20px;
+}
+
+/* ---------- DESCRIPTION ---------- */
+
+.candidate-description {
+  max-width: 300px;
+
+  color: #64748b;
+
+  line-height: 1.5;
+}
+
+/* ---------- ACTIONS ---------- */
+
+.candidate-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.candidate-view-btn,
+.candidate-delete-btn {
+  padding: 7px 12px;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+.candidate-view-btn {
+  background: #eff6ff;
+  color: #2563eb;
+
+  border: 1px solid #dbeafe;
+}
+
+.candidate-view-btn:hover {
+  background: #dbeafe;
+}
+
+.candidate-delete-btn {
+  background: #fff1f2;
+  color: #dc2626;
+
+  border: 1px solid #fecdd3;
+}
+
+.candidate-delete-btn:hover {
+  background: #ffe4e6;
+}
+
+/* ---------- EMPTY STATE ---------- */
+
+.candidate-empty {
+  padding: 70px 20px;
+
+  text-align: center;
+
+  color: #64748b;
+}
+
+.candidate-empty-icon {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 16px;
+
+  background: #eff6ff;
+
+  border-radius: 50%;
+
+  font-size: 26px;
+}
+
+.candidate-empty h3 {
+  margin: 0 0 8px;
+
+  color: #334155;
+
+  font-size: 18px;
+}
+
+.candidate-empty p {
+  margin: 0 0 20px;
+
+  font-size: 14px;
+}
+
+/* =====================================================
+   CANDIDATE DETAILS
+   ===================================================== */
+
+.candidate-detail-card {
+  background: white;
+
+  max-width: 800px;
+
+  margin: 0 auto;
+
+  padding: 32px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.candidate-detail-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding-bottom: 25px;
+
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.candidate-detail-symbol {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eff6ff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 12px;
+
+  font-size: 32px;
+}
+
+.candidate-detail-top h2 {
+  margin: 0;
+
+  color: #172554;
+
+  font-size: 24px;
+}
+
+.candidate-detail-id {
+  margin-top: 5px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.candidate-detail-row {
+  display: grid;
+
+  grid-template-columns: 180px 1fr;
+
+  gap: 20px;
+
+  padding: 15px 0;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.candidate-detail-row:last-child {
+  border-bottom: none;
+}
+
+.candidate-detail-label {
+  font-weight: 600;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.candidate-detail-value {
+  color: #334155;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.candidate-detail-actions {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 800px) {
+  .candidate-page {
+    padding: 24px 18px;
+  }
+
+  .candidate-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .candidate-table-card {
+    overflow-x: auto;
+  }
+
+  .candidate-table {
+    min-width: 800px;
+  }
+
+  .candidate-detail-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}

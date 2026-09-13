@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block title %} VoteLock | Add Candidate {% endblock
+%} {% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/candidates.css') }}"
+/>
+
+{% endblock %} {% block page_heading %} Add Candidate {% endblock %} {% block
+content %}
+
+<div class="form-page">
+  <div class="form-card">
+    <h1>Register Candidate</h1>
+
+    <p>Add a candidate to the election.</p>
+
+    <form method="POST">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Candidate ID *</label>
+
+          <input type="text" name="candidate_id" placeholder="C001" required />
+        </div>
+
+        <div class="form-group">
+          <label>Candidate Name *</label>
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Candidate name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Election Symbol</label>
+
+          <input type="text" name="symbol" placeholder="★" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+
+        <textarea
+          name="description"
+          placeholder="Candidate description..."
+          rows="5"
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <a
+          href="{{ url_for('candidates.list_candidates') }}"
+          class="secondary-button"
+        >
+          Cancel
+        </a>
+
+        <button type="submit" class="primary-button">Add Candidate</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %} {% block title %} VoteLock | Candidates {% endblock %}
+{% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/candidates.css') }}"
+/>
+
+{% endblock %} {% block page_heading %} Candidate Management {% endblock %} {%
+block content %}
+
+<div class="page-container">
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">ELECTION MANAGEMENT</p>
+
+      <h1>Candidates</h1>
+
+      <p>Manage candidates participating in the election.</p>
+    </div>
+
+    <a href="{{ url_for('candidates.add_candidate') }}" class="primary-button">
+      + Add Candidate
+    </a>
+  </div>
+
+  <div class="candidate-grid">
+    {% for candidate in candidates %}
+
+    <div class="candidate-card">
+      <div class="candidate-symbol">{{ candidate["symbol"] or "🗳️" }}</div>
+
+      <div class="candidate-info">
+        <span class="candidate-id"> {{ candidate["candidate_id"] }} </span>
+
+        <h2>{{ candidate["name"] }}</h2>
+
+        <p>{{ candidate["description"] or "No description provided." }}</p>
+
+        <span class="candidate-status"> {{ candidate["status"] }} </span>
+      </div>
+
+      <div class="candidate-actions">
+        <a
+          href="{{ url_for(
+                        'candidates.edit_candidate',
+                        candidate_id=candidate['candidate_id']
+                    ) }}"
+          class="edit-btn"
+        >
+          Edit
+        </a>
+
+        <form
+          method="POST"
+          action="{{ url_for(
+                        'candidates.remove_candidate',
+                        candidate_id=candidate['candidate_id']
+                    ) }}"
+          onsubmit="return confirm('Delete this candidate?');"
+        >
+          <button type="submit" class="delete-btn">Delete</button>
+        </form>
+      </div>
+    </div>
+
+    {% else %}
+
+    <div class="empty-state">
+      <span> 🗳️ </span>
+
+      <h2>No candidates yet</h2>
+
+      <p>Add your first election candidate.</p>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

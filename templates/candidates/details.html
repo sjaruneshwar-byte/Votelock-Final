@@ -1,0 +1,106 @@
+{% extends "base.html" %} {% block title %}VoteLock | Candidate Details{%
+endblock %} {% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/candidates.css') }}"
+/>
+
+{% endblock %} {% block content %}
+
+<div class="candidate-page">
+  <div class="candidate-header">
+    <div class="candidate-header-text">
+      <p class="eyebrow">ELECTION MANAGEMENT</p>
+
+      <h1>Candidate Details</h1>
+
+      <p>View registered candidate information.</p>
+    </div>
+
+    <a
+      href="{{ url_for('candidates.list_candidates') }}"
+      class="candidate-view-btn"
+    >
+      ← Back to Candidates
+    </a>
+  </div>
+
+  <div class="candidate-detail-card">
+    <div class="candidate-detail-top">
+      <div class="candidate-detail-symbol">
+        {{ candidate["symbol"] or "🗳️" }}
+      </div>
+
+      <div>
+        <h2>{{ candidate["name"] }}</h2>
+
+        <div class="candidate-detail-id">
+          Candidate ID: {{ candidate["candidate_id"] }}
+        </div>
+      </div>
+    </div>
+
+    <div class="candidate-detail-row">
+      <div class="candidate-detail-label">Candidate ID</div>
+
+      <div class="candidate-detail-value">{{ candidate["candidate_id"] }}</div>
+    </div>
+
+    <div class="candidate-detail-row">
+      <div class="candidate-detail-label">Candidate Name</div>
+
+      <div class="candidate-detail-value">{{ candidate["name"] }}</div>
+    </div>
+
+    <div class="candidate-detail-row">
+      <div class="candidate-detail-label">Election Symbol</div>
+
+      <div class="candidate-detail-value">
+        {{ candidate["symbol"] or "Not provided" }}
+      </div>
+    </div>
+
+    <div class="candidate-detail-row">
+      <div class="candidate-detail-label">Description</div>
+
+      <div class="candidate-detail-value">
+        {{ candidate["description"] or "No description available." }}
+      </div>
+    </div>
+
+    <div class="candidate-detail-row">
+      <div class="candidate-detail-label">Status</div>
+
+      <div class="candidate-detail-value">
+        {{ candidate["status"] or "Active" }}
+      </div>
+    </div>
+
+    <div class="candidate-detail-actions">
+      <a
+        href="{{ url_for('candidates.list_candidates') }}"
+        class="candidate-view-btn"
+      >
+        ← Back
+      </a>
+
+      <form
+        method="POST"
+        action="{{ url_for(
+                    'candidates.remove_candidate',
+                    candidate_id=candidate['candidate_id']
+                ) }}"
+        onsubmit="
+          return confirm('Are you sure you want to delete this candidate?');
+        "
+      >
+        <button type="submit" class="candidate-delete-btn">
+          Delete Candidate
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
