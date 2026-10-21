@@ -1,0 +1,139 @@
+{% extends "base.html" %} {% block title %}VoteLock | Candidates{% endblock %}
+{% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/candidates.css') }}"
+/>
+
+{% endblock %} {% block content %}
+
+<div class="candidate-page">
+  <!-- HEADER -->
+
+  <div class="candidate-header">
+    <div class="candidate-header-text">
+      <p class="eyebrow">ELECTION MANAGEMENT</p>
+
+      <h1>Candidate Management</h1>
+
+      <p>Manage candidates participating in the election.</p>
+    </div>
+
+    <a
+      href="{{ url_for('candidates.add_candidate') }}"
+      class="candidate-add-btn"
+    >
+      + Add Candidate
+    </a>
+  </div>
+
+  <!-- FLASH MESSAGES -->
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %}
+
+  <div class="candidate-flash {{ category }}">{{ message }}</div>
+
+  {% endfor %} {% endif %} {% endwith %}
+
+  <!-- TABLE -->
+
+  <div class="candidate-table-card">
+    <table class="candidate-table">
+      <thead>
+        <tr>
+          <th>Candidate ID</th>
+
+          <th>Candidate</th>
+
+          <th>Symbol</th>
+
+          <th>Description</th>
+
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for candidate in candidates %}
+
+        <tr>
+          <td>
+            <span class="candidate-id"> {{ candidate["candidate_id"] }} </span>
+          </td>
+
+          <td>
+            <span class="candidate-name"> {{ candidate["name"] }} </span>
+          </td>
+
+          <td>
+            <span class="candidate-symbol">
+              {{ candidate["symbol"] or "—" }}
+            </span>
+          </td>
+
+          <td>
+            <span class="candidate-description">
+              {{ candidate["description"] or "No description provided." }}
+            </span>
+          </td>
+
+          <td>
+            <div class="candidate-actions">
+              <a
+                href="{{ url_for(
+                                    'candidates.candidate_details',
+                                    candidate_id=candidate['candidate_id']
+                                ) }}"
+                class="candidate-view-btn"
+              >
+                View
+              </a>
+
+              <form
+                method="POST"
+                action="{{ url_for(
+                                    'candidates.remove_candidate',
+                                    candidate_id=candidate['candidate_id']
+                                ) }}"
+                onsubmit="
+                  return confirm(
+                    'Are you sure you want to delete this candidate?',
+                  );
+                "
+              >
+                <button type="submit" class="candidate-delete-btn">
+                  Delete
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+
+        {% else %}
+
+        <tr>
+          <td colspan="5" class="candidate-empty">
+            <div class="candidate-empty-icon">🗳️</div>
+
+            <h3>No Candidates Found</h3>
+
+            <p>No candidates have been added yet.</p>
+
+            <a
+              href="{{ url_for('candidates.add_candidate') }}"
+              class="candidate-add-btn"
+            >
+              + Add First Candidate
+            </a>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

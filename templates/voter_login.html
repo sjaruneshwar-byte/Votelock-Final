@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}VoteLock | Voter Login{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">{% endblock %}
+{% block content %}
+<div class="auth-page">
+  <div class="auth-wrapper">
+    <div class="auth-brand"><div class="big-logo">🗳️</div><h1>VoteLock</h1><p>Secure Voter Portal</p></div>
+    <div class="auth-card">
+      <h2>Voter sign in</h2>
+      <p class="auth-subtitle">Sign in to display your secure voting QR code.</p>
+      <form method="POST" action="{{ url_for('auth.voter_login') }}">
+        <div class="form-group"><label>Voter Username</label><input name="username" placeholder="VOTER_V001" required autofocus></div>
+        <div class="form-group"><label>Password</label><input type="password" name="password" placeholder="Enter your password" required></div>
+        <button type="submit" class="auth-button">Verify &amp; Show QR</button>
+      </form>
+      <div class="auth-footer"><a href="{{ url_for('auth.login') }}">Administrator login</a></div>
+    </div>
+    <div class="portal-switch"><a href="{{ url_for('index') }}">← Choose portal</a></div>
+    <p class="security-note">🔐 Your QR code is displayed only after successful voter authentication.</p>
+  </div>
+</div>
+{% endblock %}

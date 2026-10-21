@@ -1,0 +1,179 @@
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 30px;
+
+  background:
+    radial-gradient(circle at top left, #dbeafe, transparent 40%),
+    radial-gradient(circle at bottom right, #e0e7ff, transparent 40%), #f8fafc;
+}
+
+.auth-wrapper {
+  width: 100%;
+
+  max-width: 430px;
+
+  text-align: center;
+}
+
+.auth-brand {
+  margin-bottom: 25px;
+}
+
+.big-logo {
+  width: 65px;
+  height: 65px;
+
+  margin: auto;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background: #2563eb;
+
+  color: white;
+
+  border-radius: 18px;
+
+  font-size: 32px;
+
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.25);
+}
+
+.auth-brand h1 {
+  margin: 15px 0 5px;
+
+  color: #0f172a;
+
+  font-size: 34px;
+}
+
+.auth-brand p {
+  margin: 0;
+
+  color: #64748b;
+}
+
+.auth-card {
+  background: white;
+
+  padding: 35px;
+
+  border-radius: 18px;
+
+  text-align: left;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
+}
+
+.auth-card h2 {
+  text-align: center;
+
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 25px;
+}
+
+.auth-subtitle {
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  margin-bottom: 28px;
+}
+
+.auth-button {
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.auth-button:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-1px);
+}
+
+.auth-footer {
+  text-align: center;
+
+  margin-top: 22px;
+
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+.auth-footer a {
+  color: #2563eb;
+
+  text-decoration: none;
+
+  font-weight: 700;
+}
+
+.security-note {
+  margin-top: 18px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.otp-card {
+  text-align: center;
+}
+
+.otp-input {
+  text-align: center;
+
+  font-size: 25px !important;
+
+  letter-spacing: 8px;
+
+  font-weight: 700;
+}
+
+.otp-expiry {
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  margin-top: 20px;
+}
+
+.portal-switch{text-align:center;margin:14px 0}.portal-switch a{color:#2563eb;text-decoration:none;font-size:13px;font-weight:700}.portal-switch a:hover{text-decoration:underline}

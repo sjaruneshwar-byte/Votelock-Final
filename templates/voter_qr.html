@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}VoteLock | Voter QR{% endblock %}
+{% block page_heading %}Voter Portal{% endblock %}
+{% block extra_css %}
+<style>
+.voter-portal-shell{min-height:calc(100vh - 90px);padding:42px;display:flex;justify-content:center;align-items:flex-start;background:radial-gradient(circle at 10% 0%,#eef6ff 0,#f8fafc 38%,#f8fafc 100%)}
+.voter-card{width:min(680px,100%);background:#fff;border:1px solid #e5eaf1;border-radius:28px;box-shadow:0 24px 70px rgba(15,23,42,.10);padding:38px;text-align:center}
+.voter-status{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:#ecfdf5;border:1px solid #bbf7d0;color:#166534;font-size:11px;font-weight:800;letter-spacing:.8px}
+.voter-status i{width:8px;height:8px;border-radius:50%;background:#22c55e}
+.voter-card h1{margin:18px 0 8px;color:#101828;font-size:32px;letter-spacing:-.5px}
+.voter-card .lead{margin:0 auto;max-width:500px;color:#667085;line-height:1.7;font-size:14px}
+.identity-strip{margin:26px auto 0;max-width:500px;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:15px 17px;background:#f8fafc;border:1px solid #eaecf0;border-radius:14px}
+.identity-strip small{display:block;color:#667085;font-size:11px;margin-bottom:4px}.identity-strip strong{color:#101828;font-size:14px}
+.qr-frame{width:310px;height:310px;margin:28px auto 22px;padding:18px;background:#fff;border:1px solid #dfe5ec;border-radius:22px;display:grid;place-items:center;box-shadow:0 12px 35px rgba(15,23,42,.07)}
+#voter-qrcode{width:270px;height:270px;display:grid;place-items:center}
+.instruction{display:flex;gap:12px;text-align:left;padding:15px 16px;border:1px solid #dbeafe;background:#f5f9ff;border-radius:14px;color:#344054;font-size:13px;line-height:1.55}
+.instruction .num{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#2563eb;color:white;font-weight:800}
+.privacy-note{margin-top:15px;color:#98a2b3;font-size:11px;line-height:1.5}
+.voter-logout{display:inline-flex;margin-top:22px;padding:10px 16px;border:1px solid #d0d5dd;border-radius:10px;text-decoration:none;color:#344054;font-weight:700;background:#fff}.voter-logout:hover{background:#f9fafb}
+@media(max-width:650px){.voter-portal-shell{padding:20px}.voter-card{padding:24px}.qr-frame{width:280px;height:280px}.voter-card h1{font-size:27px}}
+</style>
+{% endblock %}
+{% block content %}
+<div class="voter-portal-shell">
+  <section class="voter-card">
+    <div class="voter-status"><i></i> VOTER AUTHENTICATED</div>
+    <h1>Present your voting QR</h1>
+    <p class="lead">Your authentication is complete. Keep this page open and present the QR code to the camera at the administrator polling station.</p>
+
+    <div class="identity-strip">
+      <div><small>Voter</small><strong>{{ voter['name'] }}</strong></div>
+      <div><small>Voter ID</small><strong>{{ voter['voter_id'] }}</strong></div>
+    </div>
+
+    <div class="qr-frame">
+      <div id="voter-qrcode" data-token="{{ voter['qr_token'] }}"></div>
+    </div>
+
+    <div class="instruction">
+      <span class="num">1</span>
+      <div><strong>Show this QR to the polling administrator.</strong><br>The administrator camera will scan and verify your voter record. Your vote is not cast from this page.</div>
+    </div>
+
+    <p class="privacy-note">This QR is linked to your authenticated voter account. Do not share or photograph it for another person.</p>
+    <a href="{{ url_for('auth.voter_logout') }}" class="voter-logout">Sign out of voter portal</a>
+  </section>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  const el=document.getElementById("voter-qrcode");
+  if(el && el.dataset.token){
+    new QRCode(el,{text:el.dataset.token,width:270,height:270,colorDark:"#101828",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
+  }
+});
+</script>
+{% endblock %}

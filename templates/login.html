@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %} VoteLock | Admin Login {% endblock
+%} {% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/auth.css') }}"
+/>
+
+{% endblock %} {% block content %}
+
+<div class="auth-page">
+  <div class="auth-wrapper">
+    <div class="auth-brand">
+      <div class="big-logo">🗳️</div>
+
+      <h1>VoteLock</h1>
+
+      <p>Smart Electronic Voting System</p>
+    </div>
+
+    <div class="auth-card">
+      <h2>Welcome back</h2>
+
+      <p class="auth-subtitle">Sign in to the administrator dashboard</p>
+
+      <form method="POST" action="{{ url_for('auth.login') }}">
+        <div class="form-group">
+          <label>Email Address</label>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="admin@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="auth-button">Login to Dashboard</button>
+      </form>
+
+      <div class="auth-footer">
+        Don't have an admin account?
+
+        <a href="{{ url_for('auth.register') }}"> Register </a>
+      </div>
+    </div>
+
+    <div class="portal-switch"><a href="{{ url_for('index') }}">← Choose portal</a></div>
+    <p class="security-note">🔒 Secure administrator access</p>
+  </div>
+</div>
+
+{% endblock %}

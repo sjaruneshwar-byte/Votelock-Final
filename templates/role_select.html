@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}VoteLock | Choose Portal{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/role.css') }}">{% endblock %}
+{% block content %}
+<div class="role-page">
+  <div class="role-shell">
+    <div class="role-brand"><div class="role-logo">✓</div><div><strong>VoteLock</strong><span>Smart Electronic Voting System</span></div></div>
+    <div class="role-copy"><span class="role-eyebrow">SECURE ELECTION ACCESS</span><h1>Choose your portal</h1><p>Select the portal that matches your role. Administrator and voter sessions are kept completely separate.</p></div>
+    <div class="role-grid">
+      <a class="role-card admin" href="{{ url_for('auth.login') }}"><div class="role-icon">⌂</div><div><span class="role-label">ADMINISTRATOR</span><h2>Election Control</h2><p>Manage voters and candidates, verify QR codes, capture voter photos, cast votes and monitor VVPAT activity.</p></div><span class="role-arrow">→</span></a>
+      <a class="role-card voter" href="{{ url_for('auth.voter_login') }}"><div class="role-icon">◉</div><div><span class="role-label">VOTER</span><h2>Voter Portal</h2><p>Sign in securely and display your personal voting QR code for the administrator polling station.</p></div><span class="role-arrow">→</span></a>
+    </div>
+    <div class="role-note"><span>🔒</span><div><strong>Separate access</strong><small>Voters cannot access administrator controls, and administrators cannot use the voter portal as a voter.</small></div></div>
+  </div>
+</div>
+{% endblock %}

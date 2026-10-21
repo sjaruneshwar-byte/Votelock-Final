@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% block title %}VoteLock | Add Candidate{% endblock
+%} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/auth.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<div class="auth-page">
+  <div class="auth-wrapper">
+    <div class="auth-brand">
+      <div class="big-logo">🗳️</div>
+
+      <h1>VoteLock</h1>
+
+      <p>Add Election Candidate</p>
+    </div>
+
+    <div class="auth-card">
+      <h2>Add Candidate</h2>
+
+      <p class="auth-subtitle">Enter the candidate information below.</p>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+
+      <div class="flash-message {{ category }}">{{ message }}</div>
+
+      {% endfor %} {% endif %} {% endwith %}
+
+      <form method="POST" action="{{ url_for('candidates.add_candidate') }}">
+        <div class="form-group">
+          <label for="candidate_id"> Candidate ID </label>
+
+          <input
+            type="text"
+            id="candidate_id"
+            name="candidate_id"
+            placeholder="Example: C001"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="name"> Candidate Name </label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter candidate name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="symbol"> Election Symbol </label>
+
+          <input
+            type="text"
+            id="symbol"
+            name="symbol"
+            placeholder="Example: 🪷"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description"> Description </label>
+
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Enter candidate description"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="auth-button">Add Candidate</button>
+      </form>
+
+      <div class="auth-footer">
+        <a href="{{ url_for('candidates.list_candidates') }}">
+          ← Back to Candidates
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

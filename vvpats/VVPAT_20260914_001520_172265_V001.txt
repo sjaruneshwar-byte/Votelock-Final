@@ -1,0 +1,353 @@
+================================
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+          VOTELOCK VVPAT
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+Vote successfully recorded
+Candidate : Sooman
+Candidate ID: C001
+Time      : 2026-09-14 00:15:20
+Status    : VERIFIED
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=
+This slip is a voter-verifiable
+paper record for the demo system.
+=

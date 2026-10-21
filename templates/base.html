@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}VoteLock{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/extra.css') }}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="{% if session.get('voter_authenticated') %}voter-body{% else %}admin-body{% endif %}">
+
+{% if session.get('admin_id') %}
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-icon">✓</div>
+    <div class="logo-text"><strong>VoteLock</strong><span>Election Control</span></div>
+  </div>
+
+  <div class="sidebar-section-label">CONTROL CENTER</div>
+  <nav class="sidebar-nav">
+    <a href="{{ url_for('admin.dashboard') }}" class="nav-item"><span>▦</span> Dashboard</a>
+    <a href="{{ url_for('qr.scanner') }}" class="nav-item"><span>⌁</span> Verify &amp; Vote</a>
+    <a href="{{ url_for('voters.list_voters') }}" class="nav-item"><span>◉</span> Voters</a>
+    <a href="{{ url_for('candidates.list_candidates') }}" class="nav-item"><span>◆</span> Candidates</a>
+  </nav>
+
+  <div class="sidebar-section-label management-label">MANAGEMENT</div>
+  <nav class="sidebar-nav">
+    <a href="{{ url_for('voters.add_voter') }}" class="nav-item"><span>＋</span> Add Voter</a>
+    <a href="{{ url_for('candidates.add_candidate') }}" class="nav-item"><span>＋</span> Add Candidate</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="station-mini"><span></span><div><strong>Polling station</strong><small>System online</small></div></div>
+    <a href="{{ url_for('auth.logout') }}" class="logout-link">↪ <span>Sign out</span></a>
+  </div>
+</aside>
+{% endif %}
+
+{% if session.get('voter_authenticated') %}
+<header class="voter-topbar">
+  <div class="voter-brand"><span class="brand-mark">✓</span><span><b>VoteLock</b><small>Secure Voter Portal</small></span></div>
+  <div class="voter-session"><span class="voter-session-dot"></span> Authenticated <a href="{{ url_for('auth.voter_logout') }}">Sign out</a></div>
+</header>
+{% elif session.get('admin_id') %}
+<header class="topbar">
+  <div class="topbar-heading">{% block page_heading %}VoteLock{% endblock %}</div>
+  <div class="topbar-user"><div class="user-avatar">{{ session.get('admin_name','A')[:1]|upper }}</div><div class="user-details"><strong>{{ session.get('admin_name', 'Administrator') }}</strong><span>Administrator · Election control</span></div></div>
+</header>
+{% endif %}
+
+<div class="flash-container">
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <div class="flash-message {{ category }}"><span class="flash-icon">{% if category == 'success' %}✓{% elif category == 'error' %}!{% else %}ℹ{% endif %}</span><span>{{ message }}</span></div>
+  {% endfor %}
+{% endwith %}
+</div>
+
+<main class="{% if session.get('admin_id') %}main-content{% else %}standalone-content{% endif %}">
+  <section class="content-area">{% block content %}{% endblock %}</section>
+</main>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

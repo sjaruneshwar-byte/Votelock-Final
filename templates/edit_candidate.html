@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}
+VoteLock | Edit Candidate
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/candidates.css') }}"
+>
+
+{% endblock %}
+
+
+{% block page_heading %}
+Edit Candidate
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-page">
+
+    <div class="form-card">
+
+        <h1>
+            Edit Candidate
+        </h1>
+
+        <p>
+            Update candidate information.
+        </p>
+
+
+        <form method="POST">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Candidate ID</label>
+
+                    <input
+                        type="text"
+                        value="{{ candidate['candidate_id'] }}"
+                        disabled
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Name *</label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        value="{{ candidate['name'] }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Symbol</label>
+
+                    <input
+                        type="text"
+                        name="symbol"
+                        value="{{ candidate['symbol'] or '' }}"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select name="status">
+
+                        <option
+                            value="Active"
+                            {% if candidate['status'] == 'Active' %}
+                            selected
+                            {% endif %}
+                        >
+                            Active
+                        </option>
+
+                        <option
+                            value="Inactive"
+                            {% if candidate['status'] == 'Inactive' %}
+                            selected
+                            {% endif %}
+                        >
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Description</label>
+
+                <textarea
+                    name="description"
+                    rows="5"
+                >{{ candidate['description'] or '' }}</textarea>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <a
+                    href="{{ url_for('candidates.list_candidates') }}"
+                    class="secondary-button"
+                >
+                    Cancel
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
